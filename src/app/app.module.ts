@@ -7,15 +7,14 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AliComponent } from './ali/ali.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ProductsComponent,
-    AliComponent 
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
