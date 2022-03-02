@@ -1,4 +1,43 @@
 <p>products works!</p>
-<h1>{{storeName}}</h1>
+<h1>{{storeName | uppercase }}</h1>
 <img src={{storeLogo}} alt="">
-<h3>We offer an explicit discount of: {{Discount}} </h3>
+<h3 *ngIf="Discountcheck()" >We offer an explicit discount of: {{ Discount }} </h3>
+
+<h3>Choose Your Favorite Cricket Player</h3>
+<select >
+    <option value="default">----</option>
+    <option *ngFor="let i of CategoryList" [value]="i">
+        {{i.Name}}
+    </option>
+</select>
+
+<h1 *ngIf="IsPurshased; then Purchase; else NonPurchase"></h1>
+<ng-template #Purchase>
+<table>
+    <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of ProductList">
+          <th scope="row">{{i.ID}}</th>
+          <td>{{i.Name}}</td>
+          <td>{{i.Quantity}}</td>
+          <td>{{i.Price}}</td>
+        </tr>
+      </tbody>
+</table>
+</ng-template>
+<ng-template #NonPurchase>
+    <div>Thanks for purchasing from our Store {{ClientName}} </div>
+</ng-template>
+
+
+  
+<input type="text" [(ngModel)]="ClientName"> {{ClientName}}
+<br>
+<input type="button" value="BUY" (click)="checkIsPurshased()">
