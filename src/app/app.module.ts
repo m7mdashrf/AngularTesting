@@ -7,7 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SharedClassesandTypesComponent } from './shared-classesand-types/shared-classesand-types.component';
+import { AliComponent } from './ali/ali.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { SharedClassesandTypesComponent } from './shared-classesand-types/shared
     HeaderComponent,
     FooterComponent,
     ProductsComponent,
-    SharedClassesandTypesComponent
+    AliComponent 
   ],
   imports: [
     BrowserModule,

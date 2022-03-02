@@ -1,4 +1,4 @@
-enum DiscountOffers
+export enum DiscountOffers
 {
     "NoDiscount"=0,
     "10%" =10,
