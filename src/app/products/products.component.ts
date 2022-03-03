@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICategory } from '../shared-classesand-types/Icategory';
 import { DiscountOffers } from '../shared-classesand-types/Discountoffers';
 import { IProduct } from '../shared-classesand-types/Iproduct';
+import { ProductServiceService } from '../Services/product-service.service';
 
 @Component({
   selector: 'app-products',
@@ -10,7 +11,17 @@ import { IProduct } from '../shared-classesand-types/Iproduct';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() {
+  Discount:any  = DiscountOffers[1];
+  storeName: string;
+  storeLogo: string;
+  public ProductList: IProduct[];
+  CategoryList: Array<ICategory>;
+  ClientName: string;
+  IsPurshased: boolean;
+
+
+  constructor(private ProductService:ProductServiceService) {
+
 
     this.storeName= "MAX";
     this.storeLogo = "https://www.google.com/search?q=photos&tbm=isch&ved=2ahUKEwiOq4fyt6b2AhUIchQKHYYXDF8Q2-cCegQIABAA&oq=photos&gs_lcp=CgNpbWcQAzIHCAAQsQMQQzIICAAQgAQQsQMyBAgAEEMyBQgAEIAEMgQIABBDMgQIABBDMgUIABCABDIFCAAQgAQyBQgAEIAEMgQIABBDOgcIIxDvAxAnOgYIABAHEB5QugxYugxg0A5oAHAAeACAAboBiAHNApIBAzAuMpgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=9N0eYo7hFYjkUYavsPgF&bih=722&biw=1536#imgrc=9e3WAscwohxHwM";
@@ -27,19 +38,17 @@ export class ProductsComponent implements OnInit {
       { ID: 3, Name: 'computers' }
       ];
   }
-  Discount:any  = DiscountOffers[1];
-
-  storeName: string;
-  storeLogo: string;
-  ProductList: IProduct[];
-  CategoryList: Array<ICategory>;
-  ClientName: string;
-  IsPurshased: boolean;
-
 
 
   ngOnInit(): void {
+    this.ProductList = this.renderValues();
   }
+
+  renderValues(){
+    return this.ProductService.GetAllProducts();
+   } 
+   
+   
   check: boolean = true;
   Discountcheck() {
     if (this.Discount == 'NoDiscount') {

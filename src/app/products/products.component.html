@@ -41,3 +41,7 @@
 <input type="text" [(ngModel)]="ClientName"> {{ClientName}}
 <br>
 <input type="button" value="BUY" (click)="checkIsPurshased()">
+
+
+<br>
+<div *ngFor="let item of ProductList"> {{item.Name}} </div>
